@@ -31,10 +31,21 @@ This App compiles for iOS, Android, and Windows. It excercises the main `whiteli
 
 ## External Files ##
 
+- http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.png - image
+- http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.css - css
+- https://api.github.com/users - JSON (REST API)
+- http://maps.googleapis.com/maps/api/js - Javascript - Google Maps 
 
-http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.png
+## Google Maps ##
 
-## githubAPI-test##
+maps.googleapis.com
+mt0.googleapis.com
+mt1.googleapis.com
+fonts.googleapis.com
+csi.gstatic.com
+maps.gstatic.com
+
+## github API##
 A simple test to GET data from the github.com API
 
 - https://api.github.com/users
