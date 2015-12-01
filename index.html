@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>github GET REST API test</title>
+    <meta http-equiv="Content-Security-Policy" 
+             content="default-src *; 
+                      style-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+                      script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+
+    <meta name="viewport" content="width=device-width">
+    <style>
+    body {margin:0px;font-size:0.5em;background-color:hsl(0,100%,50%);
+    background-image:url("http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.png");
+    background-repeat:no-repeat;
+    background-position:bottom right;
+    background-attachment: fixed;}
+    @media screen and (max-width:640px) { #mapBasic {height:250px;} }
+    @media screen and (max-width:320px) { #mapBasic {height:200px;} }
+    </style>
+    <!-- This needs to go afterwards to overwrite the 'style' just above, otherwise it is red background and a extra small font -->
+    <link rel='stylesheet' type='text/css' href='http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.css' />
+    <script type="text/javascript">
+    //
+    function onLoad() {
+        //alert("body loaded.");
+        console.info("body loaded.");
+        onDeviceReady();
+    }
+    </script>
+</head>
+<body onload="onLoad()">
+<div id='mapBasic'>
+</div>
+<h3>github GET REST API test</h3>
+<button id="button-load-data" >Load Data</button>
+<div id=content style="margin:1em;">content</div>
+<pre id=info>pre</pre>
+</body>
+<script type="text/javascript" charset="utf-8" src="zepto-1.1.6.js"></script>
+<script type="text/javascript" charset="utf-8" src="mapBasic.js"></script>
+<script type="text/javascript" charset="utf-8" >
+    /* The map we draw */
+    /* NOTE: These are global on purpose */
+    var gMap = {};
+    var gElementID = 'mapBasic';
+    var gZoomSize  = 13;
+    var gLat       = 31.767439;
+    var gLon       = -106.486593;
+    //
+    // Google Maps
+    loadMapScripts();
+    //
+    var theNames = "";
+    var numNames = 0;
+    //
+$('#button-load-data').click(function() {
+    console.info("#button-load-data");
+    $('#info').html("Fetching data from<br>https://api.github.com/users");
+    $.get("https://api.github.com/users", function(data){
+        //console.log(JSON.stringify(data, null, '\t'));
+        numNames = data.length;
+        for (i = 0; i < data.length; i++) { 
+            theNames += i + ":" + data[i].login + "<br>";
+        }   
+        $('#info').html("<b>login:</b>(" + numNames +")<br>" + theNames);
+    });
+});
+</script>
+</html>
