@@ -5,8 +5,8 @@
     <title>github GET REST API test</title>
     <meta http-equiv="Content-Security-Policy" 
              content="default-src *; 
-                      style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
-                      script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+                      style-src 'self' 'unsafe-inline' 'unsafe-eval'; 
+                      script-src 'self' 'unsafe-inline' 'unsafe-eval';">
 
     <meta name="viewport" content="width=device-width">
     <style>
@@ -37,12 +37,13 @@
 <div id=networkstatus>Offline</div>
 <button id="button-load-data" >Load Data</button>
 <button id="button-launch-external" >Launch External Browser</button>
-<div id=content style="margin:1em;">content</div>
+<div id=content style="margin:1em;">Waiting for Device Ready</div>
 <pre id=info>pre</pre>
 </body>
 <script type="text/javascript" charset="utf-8" src="zepto-1.1.6.js"></script>
 <script type="text/javascript" charset="utf-8" src="fastclick.js"></script>
 <script type="text/javascript" charset="utf-8" src="mapBasic.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" charset="utf-8" >
     /* The map we draw */
     /* NOTE: These are global on purpose */
