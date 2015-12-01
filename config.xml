@@ -18,7 +18,7 @@
         <!-- Target Platforms -->
         <platform name="android" />
         <platform name="ios" />
-        <platform name="windows" />
+        <platform name="winphone" />
 
         <!-- Android SECTION -->
         <!-- No direct modification of the AndroidManifest.xml was needed. -->
