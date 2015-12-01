@@ -25,7 +25,7 @@
     function onLoad() {
         //alert("body loaded.");
         console.info("body loaded.");
-        onDeviceReady();
+        //onDeviceReady();
     }
     </script>
 </head>
@@ -33,11 +33,15 @@
 <div id='mapBasic'>
 </div>
 <h3>github GET REST API test</h3>
+<div id=networktype>No network connection</div>
+<div id=networkstatus>Offline</div>
 <button id="button-load-data" >Load Data</button>
+<button id="button-launch-external" >Launch External Browser</button>
 <div id=content style="margin:1em;">content</div>
 <pre id=info>pre</pre>
 </body>
 <script type="text/javascript" charset="utf-8" src="zepto-1.1.6.js"></script>
+<script type="text/javascript" charset="utf-8" src="fastclick.js"></script>
 <script type="text/javascript" charset="utf-8" src="mapBasic.js"></script>
 <script type="text/javascript" charset="utf-8" >
     /* The map we draw */
@@ -48,23 +52,63 @@
     var gLat       = 31.767439;
     var gLon       = -106.486593;
     //
-    // Google Maps
-    loadMapScripts();
-    //
     var theNames = "";
     var numNames = 0;
+
+    // Wait for PhoneGap to load
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // Watch network activity
+    document.addEventListener("offline", onOffline, false);
+    document.addEventListener("online", onOnline, false);
     //
-$('#button-load-data').click(function() {
-    console.info("#button-load-data");
-    $('#info').html("Fetching data from<br>https://api.github.com/users");
-    $.get("https://api.github.com/users", function(data){
-        //console.log(JSON.stringify(data, null, '\t'));
-        numNames = data.length;
-        for (i = 0; i < data.length; i++) { 
-            theNames += i + ":" + data[i].login + "<br>";
-        }   
-        $('#info').html("<b>login:</b>(" + numNames +")<br>" + theNames);
-    });
-});
+    function onOffline() {
+        $('#networkstatus').html("Offline");
+        checkConnection();
+    }
+    function onOnline() {
+        $('#networkstatus').html("Online");
+        checkConnection();
+    }
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        $('#networktype').html(states[networkState]);
+    }
+    //
+    function onDeviceReady() {
+        $('#content').html("Device Ready.");
+        //
+        // Google Maps
+        loadMapScripts();
+        //
+        $('#button-load-data').click(function() {
+            console.info("#button-load-data");
+            $('#info').html("Fetching data from<br>https://api.github.com/users");
+            $.get("https://api.github.com/users", function(data){
+                //console.log(JSON.stringify(data, null, '\t'));
+                numNames = data.length;
+                for (i = 0; i < data.length; i++) { 
+                    theNames += i + ":" + data[i].login + "<br>";
+                }   
+                $('#info').html("<b>login:</b>(" + numNames +")<br>" + theNames);
+            });
+        });
+        $('#button-launch-external').click(function() {
+            console.info("#button-launch-external");
+            // https://www.npmjs.com/package/cordova-plugin-inappbrowser
+            window.open = cordova.InAppBrowser.open;
+            window.open("http://cordova.apache.org/blog/","_system");          
+        });
+    }
 </script>
 </html>
