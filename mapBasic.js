@@ -26,4 +26,5 @@ function loadMapScripts() {
                     'key=AIzaSyCW7ei8wIGYzeZm5NgvSJ0Thxboi2267HI&' +
                     'callback=initializeMap';
     document.body.appendChild(script);
+    $('#content').html("Loading map library.");
 }

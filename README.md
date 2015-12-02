@@ -31,10 +31,28 @@ This App compiles for iOS, Android, and Windows. It excercises the main `whiteli
 
 ## External Files ##
 
+The directive `<access (...) />` is the bottom filter. Everything eventually goes through `access`.
+
 - http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.png - image
+- Loads an external image from the same page.
+
 - http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.css - css
+- Loads an external CSS from the same page.
+- requires `CSP`
+
 - https://api.github.com/users - JSON (REST API)
-- http://maps.googleapis.com/maps/api/js - Javascript - Google Maps 
+- Loads JSON data from an internet server.
+
+- http://maps.googleapis.com/maps/api/js - Javascript - Google Maps
+- Loads Javascript from an internet server.
+- requires `CSP`
+
+- http://cordova.apache.org/blog/
+- Launches InAppBrowser
+- requires `<allow-intent (...) />`
+
+- map.html
+- 
 
 ## Google Maps ##
 

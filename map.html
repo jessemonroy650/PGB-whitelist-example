@@ -30,14 +30,11 @@
     </script>
 </head>
 <body onload="onLoad()">
-<div id='amapBasic'></div>
-<h3>Cordova whitelist example</h3>
+<div id='mapBasic'></div>
+<h3>Cordova whitelist example - map page</h3>
 <div id=networktype>No network connection</div>
 <div id=networkstatus>Offline</div>
-<button id="button-load-data" >Load Data</button>
-<button id="button-launch-external" >Launch External Browser</button>
 <div id=content style="margin:1em;">Waiting for Device Ready</div>
-<div><a href=map.html >Load map page</a></div>
 <pre id=info>pre</pre>
 </body>
 <script type="text/javascript" charset="utf-8" src="zepto-1.1.6.js"></script>
@@ -90,26 +87,7 @@
         $('#content').html("Device Ready.");
         //
         // Google Maps
-        //loadMapScripts();
-        //
-        $('#button-load-data').click(function() {
-            console.info("#button-load-data");
-            $('#info').html("Fetching data from<br>https://api.github.com/users");
-            $.get("https://api.github.com/users", function(data){
-                //console.log(JSON.stringify(data, null, '\t'));
-                numNames = data.length;
-                for (i = 0; i < data.length; i++) { 
-                    theNames += i + ":" + data[i].login + "<br>";
-                }   
-                $('#info').html("<b>login:</b>(" + numNames +")<br>" + theNames);
-            });
-        });
-        $('#button-launch-external').click(function() {
-            console.info("#button-launch-external");
-            // https://www.npmjs.com/package/cordova-plugin-inappbrowser
-            window.open = cordova.InAppBrowser.open;
-            window.open("http://cordova.apache.org/blog/","_system");          
-        });
+        loadMapScripts();
     }
 </script>
 </html>
