@@ -21,22 +21,22 @@ This App compiles for iOS, Android, and Windows. It excercises the main `whiteli
 3. zepto-1.1.6.js - a jquery equivalent, but lighter weight
 4. mapBasic.js - some google map functions
 
-- cordova-plugin-device - used to collect device information
-- cordova-plugin-file - required for file placement and `file-transfer` plugin
-- cordova-plugin-file-transfer - **to be tested**
-- cordova-plugin-inappbrowser - **to be tested**
-- cordova-plugin-media - used to play files requested via `http://`
-- cordova-plugin-network-information - used to report network availability
-- cordova-plugin-whitelist - **to be tested**
+- [cordova-plugin-device](https://www.npmjs.com/package/cordova-plugin-device) - used to collect device information
+- [cordova-plugin-file](https://www.npmjs.com/package/cordova-plugin-file) - required for file placement and `file-transfer` plugin
+- [cordova-plugin-file-transfer](https://www.npmjs.com/package/cordova-plugin-file-transfer) - **to be tested**
+- [cordova-plugin-inappbrowser](https://www.npmjs.com/package/cordova-plugin-inappbrowser) - **to be tested**
+- [cordova-plugin-media](https://www.npmjs.com/package/cordova-plugin-media) - used to play files requested via `http://`
+- [cordova-plugin-network-information](https://www.npmjs.com/package/cordova-plugin-network-information) - used to report network availability
+- [cordova-plugin-whitelist](https://www.npmjs.com/package/cordova-plugin-whitelist) - **to be tested**
 
 ## External Files ##
 
 The directive `<access (...) />` is the bottom filter. Everything eventually goes through `access`.
 
-**Loads an external image from the same page.**<br>
+**Loads an external image an internet server.**<br>
 - http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.png - image
 
-**`CSP` external CSS from the same page.**<br>
+**`CSP` external CSS from an internet server.**<br>
 - http://codesnippets.altervista.org/examples/phonegap/images/cordova-whitelist-example.css - css
 
 **`CSP` external Javascript from an internet server.**<br>
