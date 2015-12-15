@@ -1,0 +1,9 @@
+#= NOTES =
+Date: 2015-12-01
+
+2015-12-01T02:30:00 - external image loads
+2015-12-01T02:34:49 - external CSS did not load; FIX: add * to `style-src`
+2015-12-01T02:47:22 - forgot 'cordova.js'; started over
+2015-12-01T02:50:48 - REMOVE, iOS & winphone for now
+2015-12-01T03:00:02 - external CSS did not load; FIX: add * to `style-src`. However, lost 'background-image'; may be crosswalk bug.
+2015-12-01T03:07:32 - external Javascript did not load; FIX: add * to `script-src`
